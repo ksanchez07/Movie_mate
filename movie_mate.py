@@ -1,6 +1,9 @@
 from datetime import datetime, timedelta
 
 movie_string = "Hamilton 2 HR 59 MIN PG13 AMC Fiesta Square 12 Digital AMC Signature Recliners Reserved Seating Closed Caption Audio Description 2:00pm20% OFF 20% OFF 3:00pm20% OFF 20% OFF 6:00pm Caught Stealing 1 HR 47 MIN R AMC Fiesta Square 12 Digital AMC Signature Recliners Reserved Seating Closed Caption Audio Description 10:40pm Freakier Friday 1 HR 51 MIN PG AMC Fiesta Square 12 Digital AMC Signature Recliners Reserved Seating Closed Caption Audio Description 4:30pm Light of the World 1 HR 31 MIN PG AMC Fiesta Square 12 Digital AMC Signature Recliners Reserved Seating Closed Caption Audio Description 2:00pm20% OFF 20% OFF Jaws: 50th Anniversary 2 HR 5 MIN PG AMC Fiesta Square 12 Digital AMC Signature Recliners Reserved Seating Closed Caption Audio Description 2:30pm20% OFF 20% OFF The Conjuring: Last Rites 2 HR 15 MIN R AMC Fiesta Square 12 Digital AMC Signature Recliners Reserved Seating Closed Caption Audio Description 2:00pm20% OFF 20% OFF 3:15pm20% OFF 20% OFF 4:15pm 5:15pm 7:30pm 8:30pm 10:45pm The Roses 1 HR 37 MIN R AMC Fiesta Square 12 Digital AMC Signature Recliners Reserved Seating AMC Artisan Films Closed Caption Audio Description 7:45pm Weapons 2 HR 8 MIN R AMC Fiesta Square 12 Digital AMC Signature Recliners Reserved Seating Closed Caption Audio Description 7:30pm Splitsville 1 HR 44 MIN R AMC Fiesta Square 12 Digital AMC Signature Recliners Reserved Seating AMC Artisan Films Closed Caption Audio Description 3:15pm20% OFF 20% OFF Demon Slayer: Kimetsu No Yaiba Infinity Castle 2 HR 35 MIN R AMC Fiesta Square 12 Japanese Spoken with English Subtitles AMC Signature Recliners Reserved Seating 4:00pm 5:30pm 6:30pm 7:00pm 9:00pm 10:30pm 10:45pm English Language Dubbed with No Subtitles AMC Signature Recliners Reserved Seating 4:30pm 8:00pm 9:30pm 10:00pm 10:15pm Downton Abbey: The Grand Finale 2 HR 3 MIN PG AMC Fiesta Square 12 Digital AMC Signature Recliners Reserved Seating Closed Caption Audio Description 4:15pm 7:15pm 10:00pm Spinal Tap II: The End Continues 1 HR 23 MIN R AMC Fiesta Square 12 Digital AMC Signature Recliners Reserved Seating Closed Caption Audio Description 4:30pm 7:00pm The Long Walk 1 HR 48 MIN R AMC Fiesta Square 12 Digital AMC Signature Recliners Reserved Seating AMC Artisan Films Closed Caption Audio Description 6:00pm 9:00pm"
+
+#working on being able to paste into terminal but string is too long to input
+#movie_string = input("Enter the movie string: ")
 value_to_remove = "20% OFF"
 while value_to_remove in movie_string:
     movie_string = movie_string.replace(value_to_remove, "")
@@ -158,18 +161,18 @@ remove_movies_list = []
 #remove_movies = int(input("Enter the movie number you don't want to see (in format: 1, 2, 3) or press enter to continue: "))
 remove_movies = input("Enter movie numbers you don't want to see in format 1, 3, 4, or press enter: ")
 remove_movies = remove_movies.replace(",", " ")
-print(remove_movies)
+remove_movies = remove_movies.split()
+
 for char in remove_movies:
     if char.isdigit():
         remove_movies_list.append(int(char))
 
-print(remove_movies_list)
+
 movies_to_remove = [movie_names[i] for i in remove_movies_list]
 
 #remaking the showtimes list while excluding movies in the movies_to_remove list
 showtimes = [s for s in showtimes if s["name"] not in movies_to_remove]
-for i in showtimes:
-    print(i)    
+ 
 count = 0
 next_count = 0
 max_delay = timedelta(minutes=30)
